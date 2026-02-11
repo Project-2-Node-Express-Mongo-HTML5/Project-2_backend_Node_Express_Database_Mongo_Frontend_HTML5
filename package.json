@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/john-guerra/nodeExpressMongoES6_apartmentListingsOrganizer.git"
+    "url": "git+https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5.git"
   },
   "keywords": [],
   "author": "David Ahn and Alison Avery",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/john-guerra/nodeExpressMongoES6_apartmentListingsOrganizer/issues"
+    "url": "https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5/issues"
   },
-  "homepage": "https://github.com/john-guerra/nodeExpressMongoES6_apartmentListingsOrganizer#readme",
+  "homepage": "https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5#readme",
   "devDependencies": {
     "@eslint/js": "^9.37.0",
     "eslint": "^9.37.0",
