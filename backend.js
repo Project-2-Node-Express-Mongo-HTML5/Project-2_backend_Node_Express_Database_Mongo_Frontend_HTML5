@@ -2,7 +2,7 @@ import express from "express";
 import listingsRouter from "./routes/listings.js";
 
 console.log("Initializing the backend...");
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 
