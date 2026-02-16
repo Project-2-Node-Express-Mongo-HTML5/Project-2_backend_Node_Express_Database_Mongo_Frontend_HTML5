@@ -26,7 +26,7 @@ The goal is to reduce decision fatigue by ranking projects according to the user
 
 ## Features
 
-### Project Lifecycle Engine (Ideas Collection)
+### Project Lifecycle Engine Projects Collection)
 
 * Create new projects with title, effort level, estimated time, and priority
 * Edit existing projects
@@ -98,7 +98,7 @@ This project follows a **3-tier architecture**:
 * Express.js
 * RESTful API endpoints
 
-#### Ideas (Projects)
+#### Projects
 
 * `GET /ideas`
 * `POST /ideas`
@@ -120,7 +120,7 @@ This project follows a **3-tier architecture**:
 
 Two collections:
 
-#### `ideas`
+#### `projects`
 
 * title
 * effort
