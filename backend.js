@@ -15,7 +15,6 @@
 // });
 
 import express from "express";
-// import ideasRouter from "./routes/ideas.js";
 import profilesRouter from "./routes/profiles.js";
 import recommendRouter from "./routes/recommend.js";
 

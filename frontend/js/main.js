@@ -1,6 +1,6 @@
 /* 
    Utility
- */
+*/
 
 function escapeHtml(str) {
   return String(str ?? "")
@@ -12,10 +12,13 @@ function escapeHtml(str) {
 }
 
 function showMessage(element, msg) {
-  element.innerHTML = `<div class="alert alert-info p-2 mb-0">${escapeHtml(msg)}</div>`;
+  element.innerHTML = `
+    <div class="alert alert-info p-2 mb-0">
+      ${escapeHtml(msg)}
+    </div>`;
 }
 
-/* 
+/*
    API Helpers
  */
 
@@ -45,30 +48,26 @@ async function loadProfiles() {
 
   try {
     const profiles = await apiGet("/profiles");
-    renderProfiles(profiles);
+
+    if (!profiles.length) {
+      selectEl.innerHTML = `<option value="">No profiles yet</option>`;
+      return;
+    }
+
+    selectEl.innerHTML =
+      `<option value="">Select Profile</option>` +
+      profiles
+        .map(
+          (profile) =>
+            `<option value="${profile._id}">
+               ${escapeHtml(profile.name)}
+             </option>`,
+        )
+        .join("");
   } catch (err) {
-    selectEl.innerHTML = `<option value="">(Error loading profiles)</option>`;
+    selectEl.innerHTML = `<option value="">Error loading profiles</option>`;
     console.error(err);
   }
-}
-
-function renderProfiles(profiles) {
-  const selectEl = document.getElementById("profileSelect");
-
-  if (!Array.isArray(profiles) || profiles.length === 0) {
-    selectEl.innerHTML = `<option value="">No profiles yet</option>`;
-    return;
-  }
-
-  selectEl.innerHTML =
-    `<option value="">Select Profile</option>` +
-    profiles
-      .map((profile) => {
-        return `<option value="${profile._id}">
-                  ${escapeHtml(profile.name)}
-                </option>`;
-      })
-      .join("");
 }
 
 async function handleProfileSubmit(event) {
@@ -100,7 +99,7 @@ async function handleProfileSubmit(event) {
 
 /* 
    Recommend
-*/
+ */
 
 async function handleRecommendClick() {
   const selectEl = document.getElementById("profileSelect");
@@ -120,7 +119,7 @@ async function handleRecommendClick() {
       `/recommend?profileId=${encodeURIComponent(profileId)}`,
     );
 
-    if (!Array.isArray(recommendations) || recommendations.length === 0) {
+    if (!recommendations.length) {
       showMessage(resultEl, "No recommendations found.");
       return;
     }
@@ -128,8 +127,8 @@ async function handleRecommendClick() {
     const top = recommendations[0];
 
     resultEl.innerHTML = `
-      <div class="border rounded p-2">
-        <div class="fw-semibold">Recommended Next:</div>
+      <div class="border rounded p-3">
+        <h5>Recommended Project</h5>
         <div class="fs-5">${escapeHtml(top.title)}</div>
         ${
           top.score
@@ -137,9 +136,11 @@ async function handleRecommendClick() {
             : ""
         }
         ${
-          Array.isArray(top.reasons) && top.reasons.length > 0
-            ? `<ul class="small mt-2 mb-0">
-                 ${top.reasons.map((r) => `<li>${escapeHtml(r)}</li>`).join("")}
+          Array.isArray(top.reasons)
+            ? `<ul class="mt-2">
+                ${top.reasons
+                  .map((reason) => `<li>${escapeHtml(reason)}</li>`)
+                  .join("")}
                </ul>`
             : ""
         }
@@ -151,16 +152,20 @@ async function handleRecommendClick() {
 }
 
 /* 
-   Initialization
- */
+   Init
+*/
 
 function init() {
   const profileForm = document.getElementById("profileForm");
   const recommendBtn = document.getElementById("recommendBtn");
 
-  if (profileForm) profileForm.addEventListener("submit", handleProfileSubmit);
-  if (recommendBtn)
+  if (profileForm) {
+    profileForm.addEventListener("submit", handleProfileSubmit);
+  }
+
+  if (recommendBtn) {
     recommendBtn.addEventListener("click", handleRecommendClick);
+  }
 
   loadProfiles();
 }
