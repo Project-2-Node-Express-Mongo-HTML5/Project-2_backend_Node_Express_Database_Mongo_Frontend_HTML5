@@ -63,7 +63,7 @@ function Listings() {
 
   me.refreshListings = async () => {
     const res = await fetch(
-      `/api/listings?page=${page}&pageSize=${pageSize}&query=${query}`
+      `/api/listings?page=${page}&pageSize=${pageSize}&query=${query}`,
     );
     if (!res.ok) {
       console.error("Failed to fetch listings", res.status, res.statusText);
