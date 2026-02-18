@@ -17,6 +17,7 @@
 import express from "express";
 import profilesRouter from "./routes/profiles.js";
 import recommendRouter from "./routes/recommend.js";
+import { connectDB } from "./db/connector.js";
 
 console.log("Initializing the backend...");
 
@@ -24,9 +25,9 @@ const PORT = process.env.PORT || 8080;
 
 const app = express();
 
-/* 
-   Middleware
- */
+/*
+  Middleware
+*/
 
 // Parse JSON request bodies
 app.use(express.json());
@@ -34,17 +35,28 @@ app.use(express.json());
 // Serve static frontend files
 app.use(express.static("frontend"));
 
-/* 
-   Routes
- */
+/*
+  Routes
+*/
 
 app.use("/profiles", profilesRouter);
 app.use("/recommend", recommendRouter);
 
-/* 
-   Start Server
+/*
+  Start Server (after DB connects)
 */
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+async function startServer() {
+  try {
+    await connectDB();
+    console.log("Connected to MongoDB");
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error("Failed to start server:", err);
+  }
+}
+
+startServer();
