@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 const projectController = require('../controllers/projectController');
 
@@ -15,4 +15,4 @@ router.delete('/:id', projectController.deleteProject);
 router.patch('/:id/complete', projectController.completeProject);
 router.patch('/:id/abandon', projectController.abandonProject);
 
-module.exports = router;
+module.exports = { router };
