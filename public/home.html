@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekend Project Manager</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+  <nav class="navbar">
+    <h1>Weekend Project Manager</h1>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link active">Home</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="decisions.html" class="nav-link">Decide</a>
+      <a href="stats.html" class="nav-link">Statistics</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <h1 class="hero-title">Weekend Project Manager</h1>
+      <p class="hero-subtitle">A decision engine for choosing the right project at the right time</p>
+    </section>
+
+    <section class="features">
+      <div class="feature-card" onclick="window.location.href='projects.html'">
+        <div class="feature-icon">📋</div>
+        <h2>Project Lifecycle</h2>
+        <p class="feature-owner">Alison's Domain</p>
+        <p class="feature-description">
+          Create and manage projects with effort levels, time estimates, and priorities. 
+          Track completion history and see your long-term patterns.
+        </p>
+        <div class="feature-highlights">
+          <span class="highlight">✓ Full CRUD operations</span>
+          <span class="highlight">✓ Priority tracking</span>
+          <span class="highlight">✓ Completion statistics</span>
+        </div>
+        <button class="btn btn-primary">Manage Projects →</button>
+      </div>
+
+      <div class="feature-card" onclick="window.location.href='decisions.html'">
+        <div class="feature-icon">🎯</div>
+        <h2>Decision Context</h2>
+        <p class="feature-owner">David's Domain</p>
+        <p class="feature-description">
+          Define decision profiles based on available time, energy level, and season. 
+          Get smart recommendations that match your current context.
+        </p>
+        <div class="feature-highlights">
+          <span class="highlight">✓ Context-aware decisions</span>
+          <span class="highlight">✓ Reusable profiles</span>
+          <span class="highlight">✓ Smart recommendations</span>
+        </div>
+        <button class="btn btn-primary">Make Decisions →</button>
+      </div>
+    </section>
+
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Create Projects</h3>
+          <p>Add your ideas with time estimates, effort levels, and priorities</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Set Context</h3>
+          <p>Define your available time, energy level, and current season</p>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Get Recommendations</h3>
+          <p>Receive ranked suggestions that match your situation</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="personas">
+      <h2>Built For</h2>
+      <div class="persona-grid">
+        <div class="persona-card">
+          <h3>Sara - The Overloaded Optimizer</h3>
+          <p>Software engineer with many hobbies and little time. Wants the best project for a 90-minute window.</p>
+        </div>
+        <div class="persona-card">
+          <h3>Matt - The Structured Improver</h3>
+          <p>Teacher balancing learning, reading, and personal growth. Thinks in time blocks and priorities.</p>
+        </div>
+        <div class="persona-card">
+          <h3>Jamie - The Idea Collector</h3>
+          <p>Starts many projects, finishes few. Needs guidance more than motivation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Transform idle weekends into intentional progress</h2>
+      <div class="cta-buttons">
+        <button class="btn btn-primary btn-large" onclick="window.location.href='projects.html'">
+          Start Managing Projects
+        </button>
+        <button class="btn btn-secondary btn-large" onclick="window.location.href='decisions.html'">
+          Get Recommendations
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Weekend Project Manager - A collaborative full-stack project</p>
+    <p>Alison Avery (Projects) • David Ahn (Decisions)</p>
+  </footer>
+
+  <script src="js/navigation.js"></script>
+</body>
+</html>
