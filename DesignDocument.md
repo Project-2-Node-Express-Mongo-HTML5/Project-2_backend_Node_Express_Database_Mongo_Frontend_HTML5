@@ -6,42 +6,29 @@
 
 ---
 
-## Overview
+#  Project Description
 
-Weekend Project Manager is a fullstack web application designed to help users organize personal projects and receive recommendations on what to work on next. Many people accumulate hobby ideas but struggle to decide what to work on when free time becomes available.
+Weekend Project Manager is a full‑stack web application designed to help users organize personal projects and intelligently decide what to work on next. Many individuals accumulate hobby ideas, unfinished tasks, or learning goals but experience decision fatigue when free time becomes available.
 
-This application separates **project management** from **decision context**, allowing users to store projects with attributes such as effort level, priority, and status, while also defining reusable decision profiles based on time, season, and energy.
+This application separates two core concerns:
 
-The system uses a **Node + Express backend**, a **MongoDB database (Node driver)**, and a **vanilla JavaScript frontend** that dynamically renders data using REST APIs.
+##  Project Lifecycle Management
 
-The goal is to reduce decision fatigue by ranking projects according to the user’s current situation while still functioning independently as a structured project tracker.
+Users can create, update, archive, delete, and track projects over time. Each project includes structured attributes such as estimated time, effort level, priority, and status. The system functions independently as a complete project tracker.
 
----
+##  Decision Context Management
 
-## Live Demo
+Users can define reusable decision profiles based on constraints (time available, season, energy level). The system evaluates all eligible projects and generates ranked recommendations with transparent explanations.
 
-*(Link)*
+By combining structured CRUD data management with a transparent scoring algorithm, the system reduces analysis paralysis while remaining modular and architecturally clean.
 
----
+The application is built using:
 
-## Features
-
-### Project Lifecycle Engine (Ideas Collection)
-
-* Create new projects with title, effort level, estimated time, and priority
-* Edit existing projects
-* Archive or delete projects
-* Mark projects as completed or abandoned
-* View and sort projects by priority or status
-* Track completion patterns over time
-
-### Decision Context Engine (Profiles Collection)
-
-* Create reusable decision profiles such as "Low Energy Evening"
-* Input available time, energy level, and season
-* Receive ranked project recommendations
-* See explanation for why a project was recommended
-* Save and reuse profiles for quick selection
+* **Node.js + Express** (REST backend)
+* **MongoDB (Official Node Driver)**
+* **HTML5 + Modular CSS**
+* **Vanilla JavaScript (ES Modules)**
+* **Docker (local MongoDB environment)**
 
 ---
 
@@ -49,7 +36,7 @@ The goal is to reduce decision fatigue by ranking projects according to the user
 
 ### Sara – Busy Multi Hobbyist
 
-Sara is a software developer with limited weekend time. She wants a simple way to store hobby ideas and quickly determine which project fits her available time window.
+Sara is a software developer with limited weekend time. She wants a simple way to store hobby projects and quickly determine which project fits her available time window.
 
 ### Matt – Structured Learner
 
@@ -63,7 +50,7 @@ Jamie frequently starts new projects but struggles to finish them. She benefits 
 
 ## User Stories
 
-### Project Lifecycle (Ideas)
+### Project Lifecycle (Projects)
 
 * As a user, I want to create projects with effort level, estimated time, and intrinsic priority, so they can be objectively evaluated later.
 * As a user, I want to edit or archive projects when my interests change, so my system stays realistic.
@@ -81,147 +68,97 @@ Jamie frequently starts new projects but struggles to finish them. She benefits 
 
 ---
 
-## Architecture
-
-This project follows a **3-tier architecture**:
-
-### Client
-
-* Static HTML5
-* CSS
-* Vanilla JavaScript (ES6 Modules)
-* Fetch API for REST calls
-
-### Server
-
-* Node.js
-* Express.js
-* RESTful API endpoints
-
-#### Ideas (Projects)
-
-* `GET /ideas`
-* `POST /ideas`
-* `PATCH /projects/:id`
-* `DELETE /projects/:id`
-
-#### Profiles
-
-* `GET /profiles`
-* `POST /profiles`
-
-#### Recommendation Engine
-
-* `GET /recommend?profileId=<id>`
-
-> `/recommend` is a read only computation endpoint that derives ranked results from existing collections and does not create or modify database records.
-
-### Database (MongoDB Node Driver)
-
-Two collections:
-
-#### `ideas`
-
-* title
-* effort
-* estimatedTime
-* priority
-* status
-* timestamps
-
-#### `profiles`
-
-* name
-* season
-* timeAvailable
-* energyLevel
-
-MongoDB runs in Docker for local development.
-
----
-
+# 4. Design Mockups
 
 ## Design Mockup
 
-### System Architecture Wireframe
+### **System Architecture Wireframe**
 
 The diagram illustrates the client server database architecture and ownership separation between the Project Lifecycle Engine and the Decision Context Engine.
 
 ![Weekend Project Queue Manager Architecture](docs/wireframe.png)
 
 
-## Technologies Used
+---
 
-* Node.js
-* Express.js
-* MongoDB (Official Node Driver)
-* HTML5
-* CSS
+### Architecture Explanation
+
+The application follows a clear **3‑Tier Architecture**:
+
+### Client Layer
+
+* Static HTML5 structure
+* Modular CSS styling
 * Vanilla JavaScript (ES Modules)
-* Docker
+* Fetch API for REST communication
+
+### Server Layer
+
+* Node.js runtime
+* Express RESTful routes
+* Separate route modules:
+
+  * `/projects`
+  * `/profiles`
+  * `/recommend`
+
+### Database Layer
+
+* MongoDB (Node Driver)
+* Two collections:
+
+  * `projects`
+  * `profiles`
+
+The `/recommend` endpoint reads from both collections and computes ranked results dynamically without storing derived data.
 
 ---
 
-## Installation & Setup
+## UI Layout Mockup Description
 
-### 1. Clone the Repository
+The interface is divided into two primary panels:
 
-```bash
-git clone https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5.git
-cd Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5
-```
+### Left Panel – Project Lifecycle
 
-### 2. Install Dependencies
+* Form to create new projects
+* List view of stored projects
+* Controls to edit, archive, delete, and update status
 
-```bash
-npm install
-```
+### Right Panel – Decision Context & Recommendation
 
-### 3. Start MongoDB (Docker)
+* Form to create decision profiles
+* Dropdown to select saved profiles
+* "Get Recommendation" button
+* Recommendation result card displaying:
 
-```bash
-docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-community-server:latest
-```
+  * Project title
+  * Computed score
+  * Explanation list
 
-### 4. Start the Server
-
-```bash
-npm start
-```
-
-Then visit:
-
-```
-http://localhost:8080
-```
+This layout reinforces separation of concerns between structured project management and contextual decision logic.
 
 ---
 
-## Project Structure
+# 5. Architectural Justification
 
-```text
-/frontend        → Static HTML, CSS, JS
-/routes          → Express route modules
-/db              → Database connector module
-/data            → Sample data (if applicable)
-backend.js       → Express server entry point
-```
+The system design ensures:
 
----
+* Independent CRUD management of projects
+* Independent CRUD management of profiles
+* A pure computation endpoint (`/recommend`)
+* Clear separation in backend and frontend
+* Proper RESTful API design
+* Alignment with full stack architectural principles 
 
-## Compliance With Project Requirements
+The application functions as:
 
-* Uses Node + Express
-* Uses MongoDB (Node driver, no Mongoose)
-* Uses only vanilla JavaScript for client-side rendering
-* Implements at least two MongoDB collections with CRUD operations
-* Includes forms
-* Organized using ES Modules (no CommonJS `require`)
-* No template engines used
+1. A structured project tracking system
+2. A context aware decision engine
 
+This dual functionality increases practical usefulness while satisfying the academic requirements of the project rubric.
 
 ---
 
-## License
+# 6. License
 
 MIT License
