@@ -1,18 +1,29 @@
-import express from 'express';
+import express from "express";
+import {
+  createProject,
+  getAllProjects,
+  getProject,
+  updateProject,
+  deleteProject,
+  completeProject,
+  abandonProject,
+  getProjectsByPriority,
+  getStats,
+} from "../controllers/projectController.js";
+
 const router = express.Router();
-const projectController = require('../controllers/projectController');
 
 // CRUD routes
-router.post('/', projectController.createProject);
-router.get('/', projectController.getAllProjects);
-router.get('/priority', projectController.getProjectsByPriority);
-router.get('/stats', projectController.getStats);
-router.get('/:id', projectController.getProject);
-router.put('/:id', projectController.updateProject);
-router.delete('/:id', projectController.deleteProject);
+router.post("/", createProject);
+router.get("/", getAllProjects);
+router.get("/priority", getProjectsByPriority);
+router.get("/stats", getStats);
+router.get("/:id", getProject);
+router.put("/:id", updateProject);
+router.delete("/:id", deleteProject);
 
 // Status update routes
-router.patch('/:id/complete', projectController.completeProject);
-router.patch('/:id/abandon', projectController.abandonProject);
+router.patch("/:id/complete", completeProject);
+router.patch("/:id/abandon", abandonProject);
 
-module.exports = { router };
+export default router;

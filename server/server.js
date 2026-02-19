@@ -1,23 +1,37 @@
+import dotenv from "dotenv";
 import express from "express";
-require("dotenv").config();
+import cors from "cors";
+import { connectDB, closeDB } from "./config/database.js";
+import projectRoutes from "./routes/projects.js";
 
-const cors = require("cors");
-const { connectDB, closeDB } = require("./config/database");
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    allowedHeaders: ["Content-Type"],
+  }),
+);
+
 app.use(express.json());
 app.use(express.static("public"));
 
 // Routes
-app.use("/api/projects", require("./routes/projects"));
+app.use("/api/projects", projectRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", message: "Server is running" });
+});
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({ error: "Route not found" });
 });
 
 // Error handling middleware
@@ -33,6 +47,8 @@ const startServer = async () => {
 
     app.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
+      console.log(`Frontend available at http://localhost:${PORT}`);
+      console.log(`API available at http://localhost:${PORT}/api`);
     });
   } catch (error) {
     console.error("Failed to start server:", error);

@@ -1,126 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weekend Project Manager - Projects</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/layout.css">
-  <link rel="stylesheet" href="css/components.css">
-  <link rel="stylesheet" href="css/projects.css">
-  <link rel="stylesheet" href="css/stats.css">
-  <link rel="stylesheet" href="css/responsive.css">
-</head>
-<body>
-  <nav class="navbar">
-    <h1>Weekend Project Manager</h1>
-    <div class="nav-links">
-      <a href="#" class="nav-link active" data-view="projects">Projects</a>
-      <a href="#" class="nav-link" data-view="stats">Statistics</a>
-    </div>
-  </nav>
-
-  <main class="container">
-    <!-- Projects View -->
-    <div id="projects-view" class="view active">
-      <div class="view-header">
-        <h2>My Projects</h2>
-        <button id="new-project-btn" class="btn btn-primary">+ New Project</button>
-      </div>
-
-      <div class="filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="active">Active</button>
-        <button class="filter-btn" data-filter="completed">Completed</button>
-        <button class="filter-btn" data-filter="abandoned">Abandoned</button>
-        <button class="filter-btn" data-filter="archived">Archived</button>
-      </div>
-
-      <div class="sort-controls">
-        <label>
-          <input type="checkbox" id="sort-by-priority"> Sort by Priority
-        </label>
-      </div>
-
-      <div id="projects-list" class="projects-list">
-        <!-- Projects will be loaded here -->
-      </div>
-    </div>
-
-    <!-- Statistics View -->
-    <div id="stats-view" class="view">
-      <h2>Project Statistics</h2>
-      <div id="stats-container" class="stats-container">
-        <!-- Stats will be loaded here -->
-      </div>
-    </div>
-  </main>
-
-  <!-- Project Form Modal -->
-  <div id="project-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 id="modal-title">New Project</h2>
-      
-      <form id="project-form">
-        <input type="hidden" id="project-id">
-        
-        <div class="form-group">
-          <label for="project-name">Project Name *</label>
-          <input type="text" id="project-name" required>
-        </div>
-
-        <div class="form-group">
-          <label for="project-description">Description</label>
-          <textarea id="project-description" rows="3"></textarea>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="estimated-time">Estimated Time (minutes) *</label>
-            <input type="number" id="estimated-time" min="1" required>
-          </div>
-
-          <div class="form-group">
-            <label for="effort-level">Effort Level *</label>
-            <select id="effort-level" required>
-              <option value="">Select...</option>
-              <option value="low">Low</option>
-              <option value="medium">Medium</option>
-              <option value="high">High</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="priority">Priority (1-10) *</label>
-          <input type="range" id="priority" min="1" max="10" value="5">
-          <span id="priority-value">5</span>
-        </div>
-
-        <div class="form-group">
-          <label>Seasons</label>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="season" value="spring"> Spring</label>
-            <label><input type="checkbox" name="season" value="summer"> Summer</label>
-            <label><input type="checkbox" name="season" value="fall"> Fall</label>
-            <label><input type="checkbox" name="season" value="winter"> Winter</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="project-tags">Tags (comma-separated)</label>
-          <input type="text" id="project-tags" placeholder="coding, creative, learning">
-        </div>
-
-        <div class="form-actions">
-          <button type="button" class="btn btn-secondary" id="cancel-btn">Cancel</button>
-          <button type="submit" class="btn btn-primary">Save Project</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <script src="js/projects.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weekend Project Manager</title>
+  </head>
+  <body>
+    <script>
+      // Redirect to projects page
+      window.location.href = "/projects.html";
+    </script>
+  </body>
 </html>
