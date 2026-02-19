@@ -109,7 +109,7 @@ The diagram below illustrates the 3 tier architecture and separation between:
 
 * `GET /recommend?profileId=<id>`
 
-> `/recommend` is a read‑only computation endpoint that dynamically ranks projects based on profile constraints. It does not store derived data.
+> `/recommend` is a read only endpoint that ranks projects based on profile constraints. It does not store derived data.
 
 ---
 
