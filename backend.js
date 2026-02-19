@@ -43,7 +43,7 @@ app.use("/profiles", profilesRouter);
 app.use("/recommend", recommendRouter);
 
 /*
-  Start Server (after DB connects)
+  Start Server 
 */
 
 async function startServer() {
