@@ -157,7 +157,7 @@ npm install
 
 ---
 
-### 3️⃣ Start MongoDB (Docker)
+### Start MongoDB (Docker)
 
 ```bash
 docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-community-server:latest
