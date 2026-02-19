@@ -18,7 +18,6 @@ Northeastern University
 This project was completed as part of:
 
 **Web Development (Spring 2026)**
-Node + Express + Mongo + HTML5 Backend Application
 
 [https://johnguerra.co/classes/webDevelopment_online_spring_2026/](https://johnguerra.co/classes/webDevelopment_online_spring_2026/)
 
