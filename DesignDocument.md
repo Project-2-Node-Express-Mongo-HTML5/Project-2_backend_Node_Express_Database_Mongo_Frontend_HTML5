@@ -1,14 +1,16 @@
 # Weekend Project Manager
 
-**Authors:** David Ahn and Alison Avery
+**Authors:** David Ahn and Alison Avery 
+
 **Course:** Project 2 – Node + Express + Mongo + HTML5
+
 **License:** MIT
 
 ---
 
 #  Project Description
 
-Weekend Project Manager is a full‑stack web application designed to help users organize personal projects and intelligently decide what to work on next. Many individuals accumulate hobby ideas, unfinished tasks, or learning goals but experience decision fatigue when free time becomes available.
+Weekend Project Manager is a full stack web application designed to help users organize personal projects and intelligently decide what to work on next. Many individuals accumulate hobby ideas, unfinished tasks, or learning goals but experience decision fatigue when free time becomes available.
 
 This application separates two core concerns:
 
