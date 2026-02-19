@@ -90,7 +90,7 @@ export async function handleProfileSubmit(event) {
   try {
     await apiPost("/profiles", payload);
     form.reset();
-    await loadProfiles(); // Refresh the profile list after adding a new profile
+    await loadProfiles(); // Refresh the profile list
   } catch (error) {
     alert("Failed to save profile.");
     console.error(error);

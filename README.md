@@ -7,6 +7,7 @@ A full stack web application built with **Node.js, Express, MongoDB (Node Driver
 ## Author
 
 **David Ahn and Nicole Avery**
+
 Align Master of Science in Computer Science
 Northeastern University
 
@@ -18,6 +19,7 @@ This project was completed as part of:
 
 **Web Development (Spring 2026)**
 Node + Express + Mongo + HTML5 Backend Application
+
 [https://johnguerra.co/classes/webDevelopment_online_spring_2026/](https://johnguerra.co/classes/webDevelopment_online_spring_2026/)
 
 ---
@@ -25,9 +27,11 @@ Node + Express + Mongo + HTML5 Backend Application
 ## Live Demo
 
 * **Public Deployment:**
+* 
   *(Add deployed Render / Railway / Vercel link here once available)*
 
 * **GitHub Repository:**
+  
   [https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5](https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5)
 
 ---
@@ -74,7 +78,7 @@ Node + Express + Mongo + HTML5 Backend Application
 
 ### System Architecture Wireframe
 
-The diagram below illustrates the 3 tier architecture and  separation between:
+The diagram below illustrates the 3 tier architecture and separation between:
 
 * Client (HTML5 + Vanilla JS)
 * Server (Node + Express)
@@ -122,6 +126,7 @@ The diagram below illustrates the 3 tier architecture and  separation between:
 
 * HTML5
 * Modular CSS
+* Bootstrap
 * Vanilla JavaScript (ES6 Modules)
 * Fetch API for REST communication
 
