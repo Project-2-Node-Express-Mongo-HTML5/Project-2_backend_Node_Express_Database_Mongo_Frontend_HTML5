@@ -1,13 +1,17 @@
 import express from "express";
 import { ObjectId } from "mongodb";
-import { getDB } from "../db/connector.js";
+import { getDB } from "../config/database.js";
 
 const router = express.Router();
 
-// GET /profiles  -> list all profiles
+/*
+  GET /api/profiles
+  List all profiles
+*/
 router.get("/", async (req, res) => {
   try {
     const db = getDB();
+
     const profiles = await db
       .collection("profiles")
       .find({})
@@ -16,12 +20,15 @@ router.get("/", async (req, res) => {
 
     res.json(profiles);
   } catch (err) {
-    console.error("GET /profiles error:", err);
+    console.error("GET /api/profiles error:", err);
     res.status(500).json({ error: "Failed to load profiles" });
   }
 });
 
-// GET /profiles/:id -> get profile by id
+/*
+  GET /api/profiles/:id
+  Get single profile
+*/
 router.get("/:id", async (req, res) => {
   try {
     const db = getDB();
@@ -41,21 +48,25 @@ router.get("/:id", async (req, res) => {
 
     res.json(profile);
   } catch (err) {
-    console.error("GET /profiles/:id error:", err);
+    console.error("GET /api/profiles/:id error:", err);
     res.status(500).json({ error: "Failed to load profile" });
   }
 });
 
-// POST /profiles -> create new profile
+/*
+  POST /api/profiles
+  Create new profile
+*/
 router.post("/", async (req, res) => {
   try {
     const db = getDB();
 
     const name = (req.body.name || "").trim();
-    const timeAvailable = Number(req.body.timeAvailable || 0);
+    const timeAvailable = Number(req.body.timeAvailable || 0); // hours
     const energyLevel = req.body.energyLevel;
     const season = req.body.season;
 
+    // Validation
     if (!name) {
       return res.status(400).json({ error: "Profile name is required" });
     }
@@ -72,7 +83,9 @@ router.post("/", async (req, res) => {
     }
 
     if (!Number.isFinite(timeAvailable) || timeAvailable < 0) {
-      return res.status(400).json({ error: "Invalid timeAvailable" });
+      return res
+        .status(400)
+        .json({ error: "Invalid timeAvailable (must be ≥ 0 hours)" });
     }
 
     const now = new Date();
@@ -88,15 +101,20 @@ router.post("/", async (req, res) => {
 
     const result = await db.collection("profiles").insertOne(newProfile);
 
-    // Return the inserted document with the generated _id
-    res.status(201).json({ ...newProfile, _id: result.insertedId });
+    res.status(201).json({
+      ...newProfile,
+      _id: result.insertedId,
+    });
   } catch (err) {
-    console.error("POST /profiles error:", err);
+    console.error("POST /api/profiles error:", err);
     res.status(500).json({ error: "Failed to create profile" });
   }
 });
 
-// PATCH /profiles/:id -> update a profile by id (partial update)
+/*
+  PATCH /api/profiles/:id
+  Update profile
+*/
 router.patch("/:id", async (req, res) => {
   try {
     const db = getDB();
@@ -107,15 +125,19 @@ router.patch("/:id", async (req, res) => {
     }
 
     const updates = {};
+
     if (req.body.name !== undefined)
       updates.name = String(req.body.name).trim();
+
     if (req.body.timeAvailable !== undefined)
       updates.timeAvailable = Number(req.body.timeAvailable);
+
     if (req.body.energyLevel !== undefined)
       updates.energyLevel = req.body.energyLevel;
+
     if (req.body.season !== undefined) updates.season = req.body.season;
 
-    // Basic validation if fields provided
+    // Basic validation
     if (updates.name !== undefined && !updates.name) {
       return res.status(400).json({ error: "Name cannot be empty" });
     }
@@ -159,12 +181,16 @@ router.patch("/:id", async (req, res) => {
 
     res.json(result.value);
   } catch (err) {
-    console.error("PATCH /profiles/:id error:", err);
+    console.error("PATCH /api/profiles/:id error:", err);
     res.status(500).json({ error: "Failed to update profile" });
   }
 });
 
-// DELETE /profiles/:id -> delete a profile
+/*
+  ===============================
+  DELETE /api/profiles/:id
+  ===============================
+*/
 router.delete("/:id", async (req, res) => {
   try {
     const db = getDB();
@@ -184,7 +210,7 @@ router.delete("/:id", async (req, res) => {
 
     res.json({ ok: true });
   } catch (err) {
-    console.error("DELETE /profiles/:id error:", err);
+    console.error("DELETE /api/profiles/:id error:", err);
     res.status(500).json({ error: "Failed to delete profile" });
   }
 });
