@@ -5,10 +5,10 @@
   "main": "server/server.js",
   "type": "module",
   "scripts": {
-  "dev": "nodemon server/server.js",
-  "start": "node server/server.js",
-  "seed": "node server/seed.js"
-},
+    "dev": "nodemon server/server.js",
+    "start": "node server/server.js",
+    "seed": "node server/seed.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5.git"

@@ -27,12 +27,11 @@ Professor John Guerra
 ## Live Demo
 
 * **Public Deployment:**
-* 
-  *(Add Vercel link)*
+  *((https://project-2-backend-node-express-data.vercel.app/home.html))*
 
-* **GitHub Repository (Draft Branch):**
+* **GitHub Repository:**
 
-  [https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5/tree/Draft_Branch](https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5/tree/Draft_Branch)
+  [https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5/tree/Draft_Branch](https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5)
 
 ---
 
@@ -53,7 +52,8 @@ Professor John Guerra
 *(Demo link)*
 
 **Google Slides Presentation:**
-*(Slides link)*
+
+https://docs.google.com/presentation/d/1F0J_cKHwfxo14nCvGzCqhG8exH2VySDgbk2cNHoE0jE/edit?usp=sharing
 
 ---
 
