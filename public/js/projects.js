@@ -1,4 +1,4 @@
-// API Base URL (same origin)
+// API Base URL
 const API_URL = "/api/projects";
 
 // State

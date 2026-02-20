@@ -79,33 +79,53 @@ export async function updateProfile(req, res) {
   try {
     const { id } = req.params;
 
+    // Basic sanity check for id format
     if (!ObjectId.isValid(id)) {
       return res.status(400).json({ error: "Invalid profile id" });
     }
 
     const body = sanitizeProfile(req.body);
     const errors = validateProfile(body);
-
     if (errors.length > 0) {
       return res.status(400).json({ error: errors.join(", ") });
     }
 
     const collection = getProfilesCollection();
 
-    const result = await collection.findOneAndUpdate(
+    // 1) Try normal ObjectId-based lookup
+    let result = await collection.findOneAndUpdate(
       { _id: new ObjectId(id) },
       { $set: body },
       { returnDocument: "after" },
     );
 
-    if (!result.value) {
+    // In some driver versions, result can be:
+    // - { value: <doc or null>, ok: 1, lastErrorObject: {...} }
+    // - OR null (if no match)
+    const foundDoc = result && result.value ? result.value : null;
+
+    // 2) If no document found with ObjectId, try string _id fallback
+    let finalDoc = foundDoc;
+    if (!finalDoc) {
+      const fallbackResult = await collection.findOneAndUpdate(
+        { _id: id }, // string _id fallback
+        { $set: body },
+        { returnDocument: "after" },
+      );
+
+      finalDoc =
+        fallbackResult && fallbackResult.value ? fallbackResult.value : null;
+    }
+
+    // 3) Still nothing? Then truly "not found"
+    if (!finalDoc) {
       return res.status(404).json({ error: "Profile not found" });
     }
 
-    const updated = result.value;
+    // 4) Convert _id to string for the client
     res.json({
-      ...updated,
-      _id: updated._id.toString(),
+      ...finalDoc,
+      _id: finalDoc._id.toString(),
     });
   } catch (err) {
     console.error("Error updating profile:", err);

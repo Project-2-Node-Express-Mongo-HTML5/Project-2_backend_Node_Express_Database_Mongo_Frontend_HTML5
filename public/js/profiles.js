@@ -33,6 +33,7 @@ async function apiPatch(path, payload) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
+  console.log("PATCH response:", res);
   if (!res.ok) throw new Error(`PATCH ${path} failed (${res.status})`);
   return res.json();
 }
@@ -50,37 +51,63 @@ async function apiDelete(path) {
 let profilesCache = [];
 let editingProfileId = null;
 
-// ---------- Load Profiles ----------
+// ---------- Rendering ----------
+
+function renderProfilesDropdown() {
+  const selectEl = document.getElementById("profileSelect");
+  if (!selectEl) return;
+
+  // No profiles: show friendly message
+  if (!profilesCache.length) {
+    selectEl.innerHTML = "";
+    const opt = document.createElement("option");
+    opt.value = "";
+    opt.textContent = "No profiles yet";
+    selectEl.appendChild(opt);
+    return;
+  }
+
+  // Rebuild from cache
+  selectEl.innerHTML = "";
+
+  const placeholder = document.createElement("option");
+  placeholder.value = "";
+  placeholder.textContent = "Select Profile";
+  selectEl.appendChild(placeholder);
+
+  profilesCache.forEach((p) => {
+    const opt = document.createElement("option");
+    opt.value = p._id;
+    // textContent is safe; escapeHtml is not strictly necessary here,
+    // but leaving it to avoid any weird characters
+    opt.textContent = p.name ? escapeHtml(p.name) : "Untitled";
+    selectEl.appendChild(opt);
+  });
+}
+
+// ---------- Load Profiles (Initial Load / Hard Refresh) ----------
 
 async function loadProfiles() {
   const selectEl = document.getElementById("profileSelect");
   if (!selectEl) return;
 
-  selectEl.innerHTML = `<option value="">Loading profiles...</option>`;
+  selectEl.innerHTML = "";
+  const loading = document.createElement("option");
+  loading.value = "";
+  loading.textContent = "Loading profiles...";
+  selectEl.appendChild(loading);
 
   try {
     const profiles = await apiGet("/profiles");
     profilesCache = Array.isArray(profiles) ? profiles : [];
-
-    if (profilesCache.length === 0) {
-      selectEl.innerHTML = `<option value="">No profiles yet</option>`;
-      return;
-    }
-
-    selectEl.innerHTML =
-      `<option value="">Select Profile</option>` +
-      profilesCache
-        .map(
-          (p) => `
-        <option value="${p._id}">
-          ${escapeHtml(p.name ?? "Untitled")}
-        </option>
-      `,
-        )
-        .join("");
+    renderProfilesDropdown();
   } catch (err) {
     console.error("Failed to load profiles:", err);
-    selectEl.innerHTML = `<option value="">Error loading profiles</option>`;
+    selectEl.innerHTML = "";
+    const errorOpt = document.createElement("option");
+    errorOpt.value = "";
+    errorOpt.textContent = "Error loading profiles";
+    selectEl.appendChild(errorOpt);
   }
 }
 
@@ -135,18 +162,24 @@ async function handleProfileSubmit(event) {
     let saved;
 
     if (editingProfileId) {
-      // UPDATE
+      // UPDATE existing profile
       saved = await apiPatch(
         `/profiles/${encodeURIComponent(editingProfileId)}`,
         payload,
       );
+
+      // Update local cache entry
+      profilesCache = profilesCache.map((p) =>
+        p._id === saved._id ? saved : p,
+      );
     } else {
-      // CREATE
+      // CREATE new profile
       saved = await apiPost("/profiles", payload);
+      profilesCache.push(saved);
     }
 
-    // 🔥 Refresh dropdown without page reload
-    await loadProfiles();
+    // Re-render dropdown from updated cache
+    renderProfilesDropdown();
 
     // Re-select saved profile
     const selectEl = document.getElementById("profileSelect");
@@ -204,7 +237,10 @@ async function deleteSelectedProfile() {
 
   try {
     await apiDelete(`/profiles/${encodeURIComponent(id)}`);
-    await loadProfiles();
+
+    // Remove from cache and re-render
+    profilesCache = profilesCache.filter((p) => p._id !== id);
+    renderProfilesDropdown();
     resetForm();
   } catch (err) {
     console.error("Failed to delete profile:", err);
