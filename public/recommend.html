@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommendation Engine - Weekend Project Manager</title>
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <h1>Weekend Project Manager</h1>
+    <div class="nav-links">
+      <a href="home.html" class="nav-link">Home</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="recommend.html" class="nav-link active">Recommendations</a>
+      <a href="stats.html" class="nav-link">Statistics</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <div class="view-header">
+      <h2>Decision Profiles & Recommendations</h2>
+    </div>
+
+    <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
+      <h3>Create / Edit Decision Profile</h3>
+
+      <form id="profileForm">
+        <div class="form-group">
+          <label>Profile Name *</label>
+          <input type="text" name="name" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>Time Available (hours)</label>
+            <input type="number" name="timeAvailable" min="0" step="0.5">
+          </div>
+
+          <div class="form-group">
+            <label>Energy Level *</label>
+            <select name="energyLevel" required>
+              <option value="">Select...</option>
+              <option value="Low">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Season *</label>
+          <select name="season" required>
+            <option value="">Select...</option>
+            <option value="Winter">Winter</option>
+            <option value="Spring">Spring</option>
+            <option value="Summer">Summer</option>
+            <option value="Fall">Fall</option>
+          </select>
+        </div>
+
+        <div id="profileEditStatus"
+             style="margin-bottom: 1rem; font-size:0.9rem; color:#7f8c8d;">
+        </div>
+
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <button type="submit" class="btn btn-primary">
+            Save Profile
+          </button>
+
+          <button type="button"
+                  id="cancelEditProfileBtn"
+                  class="btn btn-secondary"
+                  style="display:none;">
+            Cancel Edit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
+      <h3>Use Profile to Get Recommendation</h3>
+
+      <div class="form-group">
+        <label for="profileSelect">Select Profile</label>
+        <select id="profileSelect" class="form-select">
+          <option value="">Loading profiles...</option>
+        </select>
+      </div>
+
+      <div style="display:flex; gap:1rem; margin-top:1rem; flex-wrap:wrap;">
+        <button id="getRecommendationBtn" class="btn btn-primary">
+          Get Recommendation
+        </button>
+
+        <button type="button"
+                id="editProfileBtn"
+                class="btn btn-secondary">
+          Edit Selected Profile
+        </button>
+
+        <button type="button"
+                class="btn btn-danger"
+                onclick="deleteSelectedProfile()">
+          Delete Selected Profile
+        </button>
+      </div>
+
+      <div id="recommendationResult" style="margin-top: 2rem;"></div>
+    </div>
+
+  </main>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/profiles.js"></script>
+  <script src="js/recommend.js"></script>
+
+</body>
+</html>

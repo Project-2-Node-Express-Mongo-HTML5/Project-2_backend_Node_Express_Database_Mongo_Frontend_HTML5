@@ -1,0 +1,181 @@
+/* ===============================
+   CARD
+   =============================== */
+.card {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+}
+
+/* ===============================
+   FORM STRUCTURE
+   =============================== */
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--spacing-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+/* ===============================
+   CHECKBOX GROUP
+   =============================== */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-sm);
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: 400;
+  cursor: pointer;
+}
+
+/* ===============================
+   FORM ACTIONS
+   =============================== */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+/* ===============================
+   ALERTS
+   =============================== */
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+.alert-info {
+  background-color: #d6eaf8;
+  color: #21618c;
+}
+
+.alert-success {
+  background-color: #d5f5e3;
+  color: #1e8449;
+}
+
+.alert-danger {
+  background-color: #f5b7b1;
+  color: #922b21;
+}
+
+/* ===============================
+   EMPTY STATE
+   =============================== */
+.empty-state {
+  text-align: center;
+  padding: var(--spacing-xl);
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.empty-state h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+}
+
+/* ===============================
+   PRIORITY RANGE SLIDER
+   =============================== */
+input[type="range"] {
+  width: 100%;
+  margin-top: var(--spacing-sm);
+}
+
+#priority-value {
+  font-weight: 600;
+  margin-left: var(--spacing-sm);
+  color: var(--primary-color);
+}
+
+/* ===============================
+   SECTION HEADERS
+   =============================== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* ===============================
+   BUTTON GROUP
+   =============================== */
+.button-group {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+/* ===============================
+   GRID LAYOUT
+   =============================== */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-lg);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-lg);
+}
+
+/* ===============================
+   LOADING STATE
+   =============================== */
+.loading {
+  text-align: center;
+  padding: var(--spacing-xl);
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* ===============================
+   SMALL UTILITIES
+   =============================== */
+.mt-2 {
+  margin-top: var(--spacing-md);
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.p-2 {
+  padding: var(--spacing-md);
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.small {
+  font-size: 0.85rem;
+}

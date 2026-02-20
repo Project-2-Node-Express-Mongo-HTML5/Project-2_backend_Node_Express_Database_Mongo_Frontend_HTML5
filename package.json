@@ -2,14 +2,13 @@
   "name": "weekend-project-queue-manager",
   "version": "1.0.0",
   "description": "A basic application to demonstrate Node + Express + ES6 (ESM Modules) + Mongo application to help manage a queue of tasks",
-  "main": "backend.js",
+  "main": "server/server.js",
   "type": "module",
   "scripts": {
-    "start": "node ./node_modules/nodemon/bin/nodemon.js backend.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
-    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
-  },
+  "dev": "nodemon server/server.js",
+  "start": "node server/server.js",
+  "seed": "node server/seed.js"
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5.git"
@@ -33,7 +32,9 @@
     "supertest": "^7.1.4"
   },
   "dependencies": {
-    "express": "^5.1.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
     "mongodb": "7.1",
     "nodemon": "^3.1.10"
   }
