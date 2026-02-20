@@ -267,7 +267,7 @@ http://localhost:3000
 
 The server can be configured using environment variables (recommended for deployment):
 
-* `PORT` – Server port (default: 8080)
+* `PORT` – Server port (default: 3000)
 * `MONGO_URI` – MongoDB connection string
 
 Example `.env` file:
