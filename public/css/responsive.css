@@ -1,0 +1,132 @@
+@media (max-width: 992px) {
+  /* Container padding on tablets */
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  .view-header {
+    flex-direction: column;
+    gap: var(--spacing-md);
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Navbar stacks vertically on mobile */
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-md);
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .nav-link {
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  /* Container padding on small screens */
+  .container {
+    margin: var(--spacing-lg) auto;
+    padding: 0 var(--spacing-md);
+  }
+
+  /* View header */
+  .view-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+
+  .view-header h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Forms */
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+  }
+
+  .checkbox-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xs);
+  }
+
+  /* Project actions stack */
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .project-actions .btn {
+    width: 100%;
+  }
+
+  /* Stats grid → single column */
+  .stats-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Home hero adjustments */
+  .hero {
+    padding: 3rem var(--spacing-md);
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Home features */
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  /* How-it-works steps vertical */
+  .steps {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+
+  .step-arrow {
+    transform: rotate(90deg);
+  }
+
+  /* CTA buttons stack */
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .btn-large {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 2.5rem var(--spacing-sm);
+  }
+
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .project-card {
+    padding: var(--spacing-md);
+  }
+}

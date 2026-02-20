@@ -4,7 +4,7 @@ import cors from "cors";
 import { connectDB, closeDB } from "./config/database.js";
 
 import projectRoutes from "./routes/projects.js";
-import profilesRoutes from "./routes/profiles.js";
+import profileRoutes from "./routes/profiles.js";
 import recommendRoutes from "./routes/recommend.js";
 
 dotenv.config();
@@ -41,11 +41,10 @@ app.use(express.static("public"));
 app.use("/api/projects", projectRoutes);
 
 // David's Decision Context Engine
-app.use("/api/profiles", profilesRoutes);
+app.use("/api/profiles", profileRoutes);
 
 // Integrated Recommendation Engine
 app.use("/api/recommend", recommendRoutes);
-
 /*
   Health Check
 */
@@ -94,17 +93,17 @@ const startServer = async () => {
 };
 
 /*
-  Graceful Shutdown
+  Shutdown
 */
 
 process.on("SIGINT", async () => {
-  console.log("\nShutting down gracefully...");
+  console.log("\nShutting down");
   await closeDB();
   process.exit(0);
 });
 
 process.on("SIGTERM", async () => {
-  console.log("\nShutting down gracefully...");
+  console.log("\nShutting down");
   await closeDB();
   process.exit(0);
 });
