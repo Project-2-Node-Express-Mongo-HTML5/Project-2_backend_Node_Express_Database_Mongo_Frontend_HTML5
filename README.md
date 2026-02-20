@@ -27,8 +27,8 @@ Professor John Guerra
 ## Live Demo
 
 * **Public Deployment:**
-
-* *(Add deployed Render / Railway / Vercel link here once available)*
+* 
+  *(Add Vercel link)*
 
 * **GitHub Repository (Draft Branch):**
 
@@ -179,6 +179,7 @@ GET /recommend?profileId=65f8ab1234abcde567890123
   }
 ]
 ```
+> `/recommend` is a read only endpoint that ranks projects based on profile constraints. It does not store derived data.
 
 ---
 
