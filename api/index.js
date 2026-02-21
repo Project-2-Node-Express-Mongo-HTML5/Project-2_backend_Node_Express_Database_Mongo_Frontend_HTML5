@@ -1,4 +1,3 @@
-// api/index.js
 import dotenv from "dotenv";
 import app from "../server/app.js";
 import { connectDB } from "../server/config/database.js";
