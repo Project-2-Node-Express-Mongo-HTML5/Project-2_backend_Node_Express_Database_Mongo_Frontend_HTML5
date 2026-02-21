@@ -6,7 +6,7 @@ dotenv.config();
 
 const PORT = process.env.PORT || 3000;
 
-/* = Start Server (local dev / production on Render/Railway etc.) */
+/* Start Server (local dev / production on Render/Railway etc.) */
 const startServer = async () => {
   try {
     await connectDB();
