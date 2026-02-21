@@ -27,7 +27,8 @@ Professor John Guerra
 ## Live Demo
 
 * **Public Deployment:**
-  *((https://project-2-backend-node-express-data.vercel.app/home.html))*
+  
+  [https://weekendprojectmanager.vercel.app/](https://weekendprojectmanager.vercel.app/)
 
 * **GitHub Repository:**
 
@@ -46,10 +47,12 @@ Professor John Guerra
 ## Demo Video
 
 **Application Walkthrough:**
-*(YouTube link)*
+
+[https://project-2-backend-node-express-data.vercel.app/home.html](https://www.youtube.com/watch?v=QX9rpQr-QlU)
 
 **3‑Minute Demo Video (Google Slides Recording):**
-*(Demo link)*
+
+[https://project-2-backend-node-express-data.vercel.app/home.html](https://www.youtube.com/watch?v=QX9rpQr-QlU)
 
 **Google Slides Presentation:**
 
@@ -74,6 +77,11 @@ https://docs.google.com/presentation/d/1F0J_cKHwfxo14nCvGzCqhG8exH2VySDgbk2cNHoE
 ### Recommendation Result
 
 ![Recommendation Screenshot](docs/screenshot-recommend.png)
+
+
+### Statistics Result
+
+![Recommendation Screenshot](docs/screenshot-statistic.png)
 
 ---
 
@@ -211,7 +219,7 @@ GET /recommend?profileId=65f8ab1234abcde567890123
 
 ## Instructions to Build & Run Locally
 
-### 1️ Clone the Repository
+###  Clone the Repository
 
 ```bash
 git clone https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5.git
@@ -220,7 +228,7 @@ cd Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5
 
 ---
 
-### 2️ Install Dependencies
+### Install Dependencies
 
 ```bash
 npm install
@@ -228,7 +236,7 @@ npm install
 
 ---
 
-### 3️ Start MongoDB (Docker)
+###  Start MongoDB (Docker)
 
 ```bash
 docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-community-server:latest
@@ -244,7 +252,7 @@ mongodb://localhost:27017
 
 ---
 
-### 4️ Start the Server
+### Start the Server
 
 ```bash
 npm start

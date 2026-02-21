@@ -186,7 +186,8 @@ The diagram illustrates the client server database architecture and ownership se
 
 ![Weekend Project Queue Manager Architecture](docs/wireframe.png)
 
-\
+![Frontend Design](docs/frontend-wire.png)
+
 
 ---
 
