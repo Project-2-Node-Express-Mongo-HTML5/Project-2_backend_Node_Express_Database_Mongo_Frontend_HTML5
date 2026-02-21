@@ -41,8 +41,9 @@
   box-shadow: var(--shadow-sm);
   text-align: center;
   cursor: pointer;
-  transition: transform var(--transition-normal),
-              box-shadow var(--transition-normal);
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
 }
 
 .feature-card:hover {
