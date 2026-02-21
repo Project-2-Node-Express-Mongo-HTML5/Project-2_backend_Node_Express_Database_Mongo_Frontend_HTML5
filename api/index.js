@@ -16,7 +16,7 @@ function ensureDb() {
 
 export default async function handler(req, res) {
   try {
-    await ensureDb();     // make sure Mongo is connected
+    await ensureDb(); // make sure Mongo is connected
     return app(req, res); // let Express handle the routing
   } catch (err) {
     console.error("Error in Vercel handler:", err);

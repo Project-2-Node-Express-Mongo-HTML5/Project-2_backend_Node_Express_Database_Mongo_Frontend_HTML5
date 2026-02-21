@@ -12,11 +12,11 @@ const connectDB = async () => {
       return db; // Prevent reconnecting
     }
 
-    const uri = process.env.MONGODB_URI || "mongodb://localhost:27017";
+    const uri = process.env.MONGO_URI || "mongodb://localhost:27017";
     const dbName = process.env.DB_NAME || "WeekendProjectManager";
 
     if (!uri) {
-      throw new Error("MONGODB_URI not defined in environment variables");
+      throw new Error("MONGO_URI not defined in environment variables");
     }
 
     client = new MongoClient(uri);
