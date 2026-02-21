@@ -40,7 +40,7 @@ The primary goals of this system are:
 
 1. Provide clean, independent CRUD management for projects.
 2. Provide clean, independent CRUD management for decision profiles.
-3. Implement a computation-only recommendation endpoint.
+3. Implement a computation only recommendation endpoint.
 4. Maintain separation of concerns between data storage and decision logic.
 5. Deliver transparent, explainable recommendation output.
 

@@ -52,7 +52,7 @@ Professor John Guerra
 
 **3‑Minute Demo Video (Google Slides Recording):**
 
-[https://project-2-backend-node-express-data.vercel.app/home.html](https://www.youtube.com/watch?v=QX9rpQr-QlU)
+[https://www.youtube.com/watch?v=QX9rpQr-QlU](https://www.youtube.com/watch?v=QX9rpQr-QlU)
 
 **Google Slides Presentation:**
 
