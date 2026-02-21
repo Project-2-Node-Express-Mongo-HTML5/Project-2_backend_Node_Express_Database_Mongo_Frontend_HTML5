@@ -26,11 +26,11 @@ By combining structured CRUD data management with a transparent scoring algorith
 
 The application is built using:
 
-* **Node.js + Express** (REST backend)
-* **MongoDB (Official Node Driver)**
-* **HTML5 + Modular CSS**
-* **Vanilla JavaScript (ES Modules)**
-* **Docker (local MongoDB environment)**
+- **Node.js + Express** (REST backend)
+- **MongoDB (Official Node Driver)**
+- **HTML5 + Modular CSS**
+- **Vanilla JavaScript (ES Modules)**
+- **Docker (local MongoDB environment)**
 
 ---
 
@@ -66,19 +66,19 @@ Jamie frequently starts new projects but struggles to finish them. She benefits 
 
 ### Project Lifecycle (Projects)
 
-* As a user, I want to create projects with effort level, estimated time, and intrinsic priority, so they can be objectively evaluated later.
-* As a user, I want to edit or archive projects when my interests change, so my system stays realistic.
-* As a user, I want to mark projects as completed or abandoned with timestamps, so I can see long-term patterns.
-* As a user, I want to view completion history and completion rate, so I can reflect on how I actually use my time.
-* As a user, I want to see projects ranked by internal priority score, independent of recommendations.
+- As a user, I want to create projects with effort level, estimated time, and intrinsic priority, so they can be objectively evaluated later.
+- As a user, I want to edit or archive projects when my interests change, so my system stays realistic.
+- As a user, I want to mark projects as completed or abandoned with timestamps, so I can see long-term patterns.
+- As a user, I want to view completion history and completion rate, so I can reflect on how I actually use my time.
+- As a user, I want to see projects ranked by internal priority score, independent of recommendations.
 
 ### Decision Context (Profiles)
 
-* As a user, I want to define decision profiles (ex. “Low energy evening”, “2 free hours Saturday”), so I don’t have to think every time.
-* As a user, I want to input current constraints (time available, energy level, season), so the system can reason for me.
-* As a user, I want the app to score projects against my current context, so I receive ranked recommendations instead of raw lists.
-* As a user, I want to see why a project was recommended (time fit, season match, energy alignment), so the system feels transparent.
-* As a user, I want to save and reuse decision profiles, so choosing becomes a one-click action.
+- As a user, I want to define decision profiles (ex. “Low energy evening”, “2 free hours Saturday”), so I don’t have to think every time.
+- As a user, I want to input current constraints (time available, energy level, season), so the system can reason for me.
+- As a user, I want the app to score projects against my current context, so I receive ranked recommendations instead of raw lists.
+- As a user, I want to see why a project was recommended (time fit, season match, energy alignment), so the system feels transparent.
+- As a user, I want to save and reuse decision profiles, so choosing becomes a one-click action.
 
 ---
 
@@ -88,38 +88,38 @@ Jamie frequently starts new projects but struggles to finish them. She benefits 
 
 Each project document contains:
 
-* `_id` (ObjectId)
-* `title` (String)
-* `description` (String, optional)
-* `estimatedTimeMinutes` (Number)
-* `effortLevel` ("low" | "medium" | "high")
-* `intrinsicPriority` (Number 1–5)
-* `season` ("spring" | "summer" | "fall" | "winter" | null)
-* `status` ("active" | "completed" | "archived" | "abandoned")
-* `createdAt` (Date)
-* `completedAt` (Date | null)
+- `_id` (ObjectId)
+- `title` (String)
+- `description` (String, optional)
+- `estimatedTimeMinutes` (Number)
+- `effortLevel` ("low" | "medium" | "high")
+- `intrinsicPriority` (Number 1–5)
+- `season` ("spring" | "summer" | "fall" | "winter" | null)
+- `status` ("active" | "completed" | "archived" | "abandoned")
+- `createdAt` (Date)
+- `completedAt` (Date | null)
 
 Design considerations:
 
-* Status allows lifecycle tracking without deleting historical data.
-* Intrinsic priority is independent of contextual scoring.
-* Timestamps enable future analytics (completion rate, time trends).
+- Status allows lifecycle tracking without deleting historical data.
+- Intrinsic priority is independent of contextual scoring.
+- Timestamps enable future analytics (completion rate, time trends).
 
 ## profiles Collection
 
 Each decision profile document contains:
 
-* `_id` (ObjectId)
-* `name` (String)
-* `availableTimeMinutes` (Number)
-* `energyLevel` ("low" | "medium" | "high")
-* `season` ("spring" | "summer" | "fall" | "winter" | null)
-* `createdAt` (Date)
+- `_id` (ObjectId)
+- `name` (String)
+- `availableTimeMinutes` (Number)
+- `energyLevel` ("low" | "medium" | "high")
+- `season` ("spring" | "summer" | "fall" | "winter" | null)
+- `createdAt` (Date)
 
 Design considerations:
 
-* Profiles are reusable constraint templates.
-* No derived data is stored; all recommendations are computed dynamically.
+- Profiles are reusable constraint templates.
+- No derived data is stored; all recommendations are computed dynamically.
 
 ---
 
@@ -165,11 +165,11 @@ Steps performed by `/recommend`:
 2. Retrieve the selected decision profile.
 3. Filter out projects that exceed available time.
 4. Compute a weighted score for each remaining project based on:
+   - Time fit (closer to available time scores higher)
+   - Energy alignment (exact match scores highest)
+   - Season match
+   - Intrinsic priority
 
-   * Time fit (closer to available time scores higher)
-   * Energy alignment (exact match scores highest)
-   * Season match
-   * Intrinsic priority
 5. Sort projects by descending score.
 6. Return the top 3 ranked projects.
 7. Include an explanation breakdown for each score.
@@ -188,7 +188,6 @@ The diagram illustrates the client server database architecture and ownership se
 
 ![Frontend Design](docs/frontend-wire.png)
 
-
 ---
 
 ### Architecture Explanation
@@ -197,32 +196,30 @@ The application follows a clear **3‑Tier Architecture**:
 
 ### Client Layer
 
-* Static HTML5 structure
-* Modular CSS styling
-* Vanilla JavaScript (ES Modules)
-* Fetch API for REST communication
+- Static HTML5 structure
+- Modular CSS styling
+- Vanilla JavaScript (ES Modules)
+- Fetch API for REST communication
 
 The frontend is intentionally framework-free to demonstrate understanding of core web fundamentals.
 
 ### Server Layer
 
-* Node.js runtime
-* Express RESTful routes
-* Route modules:
-
-  * `/projects`
-  * `/profiles`
-  * `/recommend`
+- Node.js runtime
+- Express RESTful routes
+- Route modules:
+  - `/projects`
+  - `/profiles`
+  - `/recommend`
 
 Separation into route modules enforces modularity and clean organization.
 
 ### Database Layer
 
-* MongoDB (Node Driver)
-* Two independent collections:
-
-  * `projects`
-  * `profiles`
+- MongoDB (Node Driver)
+- Two independent collections:
+  - `projects`
+  - `profiles`
 
 The `/recommend` endpoint reads from both collections and computes ranked results dynamically without storing derived data.
 
@@ -234,20 +231,19 @@ The interface is divided into two primary panels:
 
 ### Left Panel – Project Lifecycle
 
-* Form to create new projects
-* List view of stored projects
-* Controls to edit, archive, delete, and update status
+- Form to create new projects
+- List view of stored projects
+- Controls to edit, archive, delete, and update status
 
 ### Right Panel – Decision Context & Recommendation
 
-* Form to create decision profiles
-* Dropdown to select saved profiles
-* "Get Recommendation" button
-* Recommendation result cards displaying:
-
-  * Project title
-  * Computed score
-  * Explanation list
+- Form to create decision profiles
+- Dropdown to select saved profiles
+- "Get Recommendation" button
+- Recommendation result cards displaying:
+  - Project title
+  - Computed score
+  - Explanation list
 
 This layout reinforces separation of concerns between structured project management and contextual decision logic.
 
@@ -263,9 +259,9 @@ Typical connection string:
 
 Benefits of Docker integration:
 
-* Eliminates local installation conflicts
-* Provides isolated database instance
-* Ensures consistent environment across machines
+- Eliminates local installation conflicts
+- Provides isolated database instance
+- Ensures consistent environment across machines
 
 ---
 
@@ -273,13 +269,13 @@ Benefits of Docker integration:
 
 The system design ensures:
 
-* Independent CRUD management of projects
-* Independent CRUD management of profiles
-* A pure computation endpoint (`/recommend`)
-* Clear separation between data storage and decision logic
-* Proper RESTful API design
-* Modular route organization
-* No duplication of derived data
+- Independent CRUD management of projects
+- Independent CRUD management of profiles
+- A pure computation endpoint (`/recommend`)
+- Clear separation between data storage and decision logic
+- Proper RESTful API design
+- Modular route organization
+- No duplication of derived data
 
 The application functions as:
 
