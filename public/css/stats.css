@@ -61,3 +61,11 @@
   color: var(--text-secondary);
   font-size: 0.9rem;
 }
+
+.recent-completions--full-width {
+  grid-column: 1 / -1;
+}
+
+.recent-completions-title {
+  margin-bottom: 0.75rem;
+}

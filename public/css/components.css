@@ -179,3 +179,83 @@ input[type="range"] {
 .small {
   font-size: 0.85rem;
 }
+
+.card-spacious {
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.profile-edit-status {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #7f8c8d;
+}
+
+.button-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.button-row--with-top-margin {
+  margin-top: 1rem;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.recommendation-result {
+  margin-top: 2rem;
+}
+
+.recommendation-loading {
+  margin-top: 0.5rem;
+}
+
+.recommendation-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.recommendation-rank {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.recommendation-title {
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.recommendation-score {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.25rem;
+}
+
+.recommendation-reasons {
+  margin-top: 0.75rem;
+}
+
+.recommendation-reasons-title {
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 0.25rem;
+}
+
+.recommendation-reasons-list {
+  font-size: 0.85rem;
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.recommendation-no-reason {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.75rem;
+}

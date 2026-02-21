@@ -1,4 +1,3 @@
-// API Base URL (same-origin)
 const API_URL = "/api";
 
 // DOM Elements
@@ -63,13 +62,15 @@ function renderStats(stats) {
     ${
       stats.recentCompletions && stats.recentCompletions.length > 0
         ? `
-      <div class="recent-completions" style="grid-column: 1 / -1;">
-        <h3>Recent Completions</h3>
+      <div class="recent-completions recent-completions--full-width">
+        <h3 class="recent-completions-title">Recent Completions</h3>
         ${stats.recentCompletions
           .map(
             (project) => `
           <div class="completion-item">
-            <div class="completion-name">${escapeHtml(project.name)}</div>
+            <div class="completion-name">
+              ${escapeHtml(project.name)}
+            </div>
             <div class="completion-date">
               Completed: ${new Date(project.completedAt).toLocaleDateString()}
             </div>

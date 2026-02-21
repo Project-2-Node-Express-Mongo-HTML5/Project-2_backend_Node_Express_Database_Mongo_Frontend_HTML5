@@ -131,9 +131,9 @@ a {
   font-size: 0.85rem;
 }
 
-/* ===============================
+/* 
    FORM ELEMENTS
-   =============================== */
+ */
 input,
 select,
 textarea {
@@ -152,9 +152,9 @@ textarea:focus {
   border-color: var(--primary-color);
 }
 
-/* ===============================
+/* 
    BADGES
-   =============================== */
+*/
 .status-badge {
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius-lg);
@@ -206,9 +206,9 @@ textarea:focus {
   color: #c0392b;
 }
 
-/* ===============================
+/*
    MODAL
-   =============================== */
+*/
 .modal {
   display: none;
   position: fixed;
@@ -241,9 +241,9 @@ textarea:focus {
   cursor: pointer;
 }
 
-/* ===============================
+/* 
    FILTER BUTTONS
-   =============================== */
+ */
 .filter-btn {
   padding: 0.5rem 1rem;
   border-radius: var(--radius-md);
@@ -258,9 +258,9 @@ textarea:focus {
   color: var(--white);
 }
 
-/* ===============================
+/* 
    UTILITIES
-   =============================== */
+*/
 .text-center {
   text-align: center;
 }
