@@ -85,7 +85,7 @@ function renderProfilesDropdown() {
   });
 }
 
-// ---------- Load Profiles (Initial Load / Hard Refresh) ----------
+// ---------- Load Profiles ----------
 
 async function loadProfiles() {
   const selectEl = document.getElementById("profileSelect");
@@ -111,7 +111,7 @@ async function loadProfiles() {
   }
 }
 
-// ---------- Fill Form (Edit Mode) ----------
+// ---------- Fill Form ----------
 
 function fillForm(profile) {
   const form = document.getElementById("profileForm");
@@ -139,7 +139,7 @@ function resetForm() {
   if (cancelBtn) cancelBtn.style.display = "none";
 }
 
-// ---------- Handle Submit (Create + Update) ----------
+// ---------- Handle Submit ----------
 
 async function handleProfileSubmit(event) {
   event.preventDefault();
