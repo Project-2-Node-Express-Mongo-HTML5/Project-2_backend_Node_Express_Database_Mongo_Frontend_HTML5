@@ -178,14 +178,17 @@ async function handleProfileSubmit(event) {
       profilesCache.push(saved);
     }
 
-    // Re-render dropdown from updated cache
-    renderProfilesDropdown();
+    // // Re-render dropdown from updated cache
+    // renderProfilesDropdown();
 
     // Re-select saved profile
     const selectEl = document.getElementById("profileSelect");
     if (selectEl && saved && saved._id) {
       selectEl.value = saved._id;
     }
+
+        // Re-render dropdown from updated cache
+    renderProfilesDropdown();
 
     resetForm();
   } catch (err) {
