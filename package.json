@@ -20,22 +20,23 @@
     "url": "https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5/issues"
   },
   "homepage": "https://github.com/Project-2-Node-Express-Mongo-HTML5/Project-2_backend_Node_Express_Database_Mongo_Frontend_HTML5#readme",
-  "devDependencies": {
-    "@eslint/js": "^9.39.2",
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-jest": "^29.14.0",
-    "eslint-plugin-prettier": "^5.5.5",
-    "globals": "^16.5.0",
-    "jest": "^30.2.0",
-    "prettier": "^3.8.1",
-    "supertest": "^7.1.4"
-  },
-  "dependencies": {
-    "cors": "^2.8.6",
-    "dotenv": "^17.3.1",
-    "express": "^5.2.1",
-    "mongodb": "^7.1.0",
-    "nodemon": "^3.1.10"  
+ "devDependencies": {
+  "@eslint/js": "^9.39.2",
+  "eslint": "^9.39.2",
+  "eslint-config-prettier": "^10.1.8",
+  "eslint-plugin-jest": "^29.14.0",
+  "eslint-plugin-prettier": "^5.5.5",
+  "globals": "^16.5.0",
+  "jest": "^30.2.0",
+  "prettier": "^3.8.1",
+  "supertest": "^7.1.4",
+  "nodemon": "^3.1.10"
+},
+"dependencies": {
+  "cors": "^2.8.6",
+  "dotenv": "^17.3.1",
+  "express": "^5.2.1",
+  "mongodb": "^7.1.0",
+  "iconv-lite": "^0.6.3"
   }
 }
