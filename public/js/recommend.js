@@ -113,8 +113,6 @@ async function handleGetRecommendationClick() {
   }
 }
 
-/* ------------- Wire up button ------------- */
-
 document.addEventListener("DOMContentLoaded", () => {
   const btn = document.getElementById("getRecommendationBtn");
   if (btn) {
